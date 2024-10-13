@@ -39,7 +39,7 @@ jobs:
 
     - name: Generating Makefiles
       run: |
-        if [[ "${{ runner.os }}" == "Windows" ]]; then
+        if  ([[ "${{ runner.os }}" == "Windows" ]]); then
           export enable_ccache=off
         else
           export enable_ccache=on
