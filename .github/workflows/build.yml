@@ -8,30 +8,30 @@ jobs:
       matrix:
         os: [windows-latest]
         build_type: [Release]
-      enable_ui: [on]
-      include:
-       -os:windows-latest
-       build_type:Release
-       enable_ui:on
+        enable_ui: [on]
+        include: 
+         -os:windows-latest
+          build_type:Release
+          enable_ui:on
     steps:
     - uses: actions/checkout@v3
       with:
         submodules: 'recursive'
-    - name:ccache
-      uses：hendrikmuhs/ccache-action@v1
-      if:runner.os == 'Linux'
-     with ;
+    - name: ccache
+       uses：hendrikmuhs/ccache-action@v1
+       if:runner.os == 'Linux'
+      with :
         key:${{matrix.os}}=${{matrix.enable_ui}}
         -uses:seanmiddleditch/gha-setup-ninja@master
         -uses:ilammy/msvc-dev-cmd@v1
         if:runner.os=='windows'
         -name:Install Dependencies
-      shell:bash
-      run:|
-        if [[ "${{ runner.os }}" == "Linux" ]] ; then
-         sudo apt-get update-qq
-         sudo apt-get install-y \
-          libc11-dev libxcursor-dev libxi-dev
+         shell:bash
+         run:|
+          if [[ "${{ runner.os }}" == "Linux" ]] ; then
+             sudo apt-get update-qq
+             sudo apt-get install-y \
+              libc11-dev libxcursor-dev libxi-dev
         fi
     - name: Generating Makefiles
       shell: bash
