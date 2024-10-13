@@ -1,23 +1,23 @@
 name: build
 on: [push, pull_request]
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest]
-        build_type: [Release]
-        enable_ui: [on]
-        include: 
-         -os:windows-latest
-          build_type:Release
-          enable_ui:on
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        submodules: 'recursive'
-    - name: ccache
+ build:
+  runs-on: ${{ matrix.os }}
+  strategy: 
+   fail-fast: false
+   matrix:
+     os: [windows-latest]
+     build_type: [Release]
+     enable_ui: [on]
+     include:  
+      -os:windows-latest
+       build_type:Release
+       enable_ui:on
+  steps:
+  - uses: actions/checkout@v3
+    with:
+     submodules: 'recursive'
+  - name: ccache
        uses：hendrikmuhs/ccache-action@v1
        if:runner.os == 'Linux'
       with :
