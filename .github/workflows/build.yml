@@ -8,9 +8,9 @@ jobs:
       matrix:
         os: [windows-latest]
         build_type: [Release]
-      enable_ui:[on]
+      enable_ui: [on]
       include:
-      -os:windows-latest
+       -os:windows-latest
        build_type:Release
        enable_ui:on
     steps:
@@ -19,7 +19,7 @@ jobs:
         submodules: 'recursive'
     - name:ccache
       uses：hendrikmuhs/ccache-action@v1
-      if: runner.os == 'Linux'
+      if:runner.os == 'Linux'
       with:
         key:${{matrix.os}}=${{matrix.enable_ui}}
         -uses:seanmiddleditch/gha-setup-ninja@master
