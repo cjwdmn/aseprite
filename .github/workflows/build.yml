@@ -20,14 +20,14 @@ jobs:
     - name:ccache
       uses：hendrikmuhs/ccache-action@v1
       if:runner.os == 'Linux'
-      with:
+     with ;
         key:${{matrix.os}}=${{matrix.enable_ui}}
         -uses:seanmiddleditch/gha-setup-ninja@master
         -uses:ilammy/msvc-dev-cmd@v1
         if:runner.os=='windows'
         -name:Install Dependencies
-      shell: bash
-      run: |
+      shell:bash
+      run:|
         if [[ "${{ runner.os }}" == "Linux" ]] ; then
          sudo apt-get update-qq
          sudo apt-get install-y \
@@ -55,9 +55,9 @@ jobs:
       shell: bash
       run: |
         cd build && ninja
-    -uses:actions/upload-artifact@v3
-     with:
-      name:aseprite
-      path:|
-       D:/a/aseprite/aseprite/build/bin/data
-        D:/a/aseprite/aseprite/build/bin/aseprite.exe
+        -uses:actions/upload-artifact@v3
+             with: 
+        name:aseprite
+         path:|
+         D:/a/aseprite/aseprite/build/bin/data
+          D:/a/aseprite/aseprite/build/bin/aseprite.exe
